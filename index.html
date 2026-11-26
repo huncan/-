@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="30초 동안 두더지를 잡아 최고 점수에 도전하는 웹 게임" />
+  <title>두더지 팡팡!</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <div class="dashboard">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">30초 집중력 챌린지</p>
+        <h1>두더지 <span>팡팡!</span></h1>
+      </div>
+      <div class="difficulty-wrap">
+        <label for="difficulty">난이도</label>
+        <select id="difficulty" aria-label="난이도 선택">
+          <option value="easy">느긋 🌱</option>
+          <option value="normal" selected>보통 ⚡</option>
+          <option value="hard">번개 🔥</option>
+        </select>
+        <button id="soundBtn" type="button" aria-label="효과음" aria-pressed="true">🔊 효과음 켜짐</button>
+      </div>
+    </header>
+
+    <section class="scoreboard" aria-label="게임 현황">
+      <div class="stat time-stat"><span class="icon">⏱️</span><div><small>남은 시간</small><strong><span id="time">30</span><em>초</em></strong></div></div>
+      <div class="stat"><span class="icon">🎯</span><div><small>현재 점수</small><strong id="score">0</strong></div></div>
+      <div class="stat"><span class="icon">🏆</span><div><small>최고 점수</small><strong id="best">0</strong></div></div>
+      <div class="stat"><div><small>잡은 두더지</small><strong id="caught">0</strong></div></div>
+      <div class="stat"><div><small>놓친 두더지</small><strong id="missed">0</strong></div></div>
+      <div class="stat"><div><small>명중률</small><strong id="accuracy">0%</strong></div></div>
+    </section>
+    <progress id="timeBar" max="30" value="30" aria-label="남은 시간"></progress>
+    </div>
+
+    <div class="play-area">
+    <section class="field" aria-label="두더지 게임판">
+      <div class="cloud cloud-one">☁️</div><div class="cloud cloud-two">☁️</div>
+      <div id="board" class="board" aria-live="polite"></div>
+      <p id="message" class="message" role="status">시작 버튼을 누르고 두더지를 잡아보세요!</p>
+      <div id="countdown" class="countdown" aria-hidden="true" hidden></div>
+    </section>
+
+    <div class="controls game-controls">
+      <button id="startBtn" class="primary">게임 시작</button>
+      <button id="pauseBtn" class="secondary" disabled>일시정지</button>
+      <button id="restartBtn" class="secondary" disabled>다시 시작</button>
+    </div>
+    </div>
+  </main>
+  <dialog id="results" aria-labelledby="resultTitle">
+    <div id="celebration" class="celebration" aria-hidden="true"></div>
+    <p id="recordBadge" class="record-badge" hidden>🏆 새 최고 기록!</p>
+    <h2 id="resultTitle">최종 결과</h2>
+    <dl id="resultStats"></dl>
+    <form method="dialog" class="controls">
+      <button class="primary" autofocus>결과 닫기</button>
+    </form>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
